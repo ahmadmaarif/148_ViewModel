@@ -1,4 +1,5 @@
-@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class,
+@file:OptIn(
+    ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class,
     ExperimentalMaterial3Api::class
 )
 
@@ -7,6 +8,7 @@ package com.example.viewmodel
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -37,8 +40,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -69,10 +75,23 @@ class MainActivity : ComponentActivity() {
 fun TampilLayout(
     modifier: Modifier = Modifier
 ) {
-    Card(
-        modifier = Modifier,
-        elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
-    ) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Image(
+            painter = painterResource(id = R.drawable.baseline_arrow_back_24) ,
+            contentDescription = "",
+            modifier = Modifier.size(20.dp)
+        )
+        Text(
+            text = "Register", fontSize = 15.sp,
+            fontWeight = FontWeight.Bold, textAlign = TextAlign.Center,
+            modifier = Modifier.padding(horizontal = 150.dp, vertical = 10.dp)
+        )
+        Card(
+            modifier = Modifier,
+            elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
+        ) {
+
+        }
         Column(
             verticalArrangement = Arrangement.spacedBy(10.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -88,7 +107,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()) {
 
     var textNama by remember { mutableStateOf("") }
     var textTlp by remember { mutableStateOf("") }
-    var textAlmt by remember{ mutableStateOf("") }
+    var textAlmt by remember { mutableStateOf("") }
 
     var context = LocalContext.current
     val dataForm: DataForm
@@ -143,7 +162,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()) {
     Button(
         modifier = Modifier.fillMaxWidth(),
         onClick = {
-            cobaViewModel.insertData(textNama, textTlp, textAlmt,dataForm.sex)
+            cobaViewModel.insertData(textNama, textTlp, textAlmt, dataForm.sex)
         }
     ) {
         Text(
