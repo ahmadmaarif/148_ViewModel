@@ -73,29 +73,36 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TampilLayout(
-    modifier: Modifier = Modifier
+    modifier: Modifier= Modifier
 ) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Image(
-            painter = painterResource(id = R.drawable.baseline_arrow_back_24) ,
-            contentDescription = "",
-            modifier = Modifier.size(20.dp)
-        )
-        Text(
-            text = "Register", fontSize = 15.sp,
-            fontWeight = FontWeight.Bold, textAlign = TextAlign.Center,
-            modifier = Modifier.padding(horizontal = 150.dp, vertical = 10.dp)
-        )
-        Card(
-            modifier = Modifier,
-            elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
-        ) {
-
+    Card(
+        modifier = Modifier,
+        elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Image(
+                painter = painterResource(
+                    id = com.example.viewmodel.R.drawable.baseline_arrow_back_24
+                ), contentDescription = "",
+                modifier = Modifier.size(20.dp)
+            )
+            Text(
+                text = "Register",
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(horizontal = 150.dp, vertical = 10.dp)
+            )
         }
+        Text(
+            text = "Create Your Account",
+            fontSize = 20.sp, fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(horizontal = 40.dp)
+        )
         Column(
             verticalArrangement = Arrangement.spacedBy(10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(20.dp)
+            horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(20.dp)
         ) {
             TampilForm()
         }
@@ -247,3 +254,4 @@ fun Preview() {
         TampilLayout()
     }
 }
+
